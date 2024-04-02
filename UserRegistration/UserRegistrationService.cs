@@ -33,18 +33,36 @@ public class UserRegistrationService
             return "Username already exists.";
         }
         //Validera lösenordet
-       if (!Password(password)) 
-        {
+        if (password.Length < 8)
+            {
             Console.WriteLine("Password lenght must be over 8 characters and must include special sign");
             return "Password lenght must be over 8 characters and must include special sign";
         }
-       //Validera email
-       if (!CheckEmail(email)) 
+        //if (!IsValidEmail(email))
+        //{
+        //    Console.WriteLine("Invalid email format, must include @gmail.com.");
+        //    return "Invalid email format, must include @gmail.com.";
+        //}
+        if (!email.EndsWith("@gmail.com"))
         {
             Console.WriteLine("Email must include @gmail.com");
             return "Email must include @gmail.com";
         }
-       // Skapa en ny användare och lägg till i listan
+
+
+        // //Validera email
+        // /*if (CheckEmail(email))*/
+        // if (email.EndsWith("@gmail.com"))
+        // {
+        //     Console.WriteLine("Email must include @gmail.com");
+        //     return "Email must include @gmail.com";
+        // }
+        //// Skapa en ny användare och lägg till i listan
+        ///
+        //Users.Add(username);
+
+        //Console.WriteLine("User added successfully.");
+        //return "User added successfully.";
         User newUser = new User(username, password, email);
         Users.Add(username);
         Console.WriteLine("User added successfully.");
@@ -53,7 +71,10 @@ public class UserRegistrationService
     //Metod för att validera lösenordet
     public bool Password(string password)
     {
-        if (password is not null && password.Length >= 8 && CheckIsCharacterSpecial(password)) 
+        string specialCharacters = "!@#$%^&*()-_=+[]{};:'\",.<>/?\\|";
+        
+    if (password.Length >= 8 && (password.Any(sc => specialCharacters.Contains(sc))))
+            //if (password is not null && password.Length >= 8 && CheckIsCharacterSpecial(password)) 
         {
             return true;
         }
@@ -77,16 +98,27 @@ public class UserRegistrationService
     {
         return str.All(char.IsLetterOrDigit);
     }
-    //Metod för kontrollera email
-    public bool CheckEmail(string email)
+    public bool IsValidEmail(string email)
     {
-        if (email.EndsWith("@gmail.com"))
+        try
         {
-            return true;
+            var addr = new System.Net.Mail.MailAddress(email);
+            return addr.Address == email;
         }
-        else
+        catch
         {
             return false;
         }
     }
+    //Metod för kontrollera email
+    //public bool CheckEmail(string email)
+    //{
+    //    if (email.EndsWith("@gmail.com"))
+    //    {
+    //        return true;
+    //    }
+    //    else
+    //    {
+    //        return false;
+    //    }
 }

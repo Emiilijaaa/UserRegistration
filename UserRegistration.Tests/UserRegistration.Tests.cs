@@ -41,7 +41,7 @@ namespace UserRegistration.Tests
             // Arrange
             var registrationService = new UserRegistrationService();
             string username = "abcdefghij";
-            string password = "password123!";
+            string password = "password!";
             string email = "emmafilip17@gmail.com";
             // Act
             string result = registrationService.AddUser(username, password, email);
@@ -55,7 +55,7 @@ namespace UserRegistration.Tests
             // Arrange
             var registrationService = new UserRegistrationService();
             string username = "abcdefghij";
-            string password = "passw";
+            string password = "pass";
             string email = "emmafilip17@gmail.com";
             // Act
             string result = registrationService.AddUser(username, password, email);
@@ -70,7 +70,7 @@ namespace UserRegistration.Tests
             // Arrange
             var registrationService = new UserRegistrationService();
             string username = "abcdefghij";
-            string password = "passw!";
+            string password = "pass!";
             string email = "emmafilip17@gmail.com";
             // Act
             string result = registrationService.AddUser(username, password, email);
@@ -93,13 +93,13 @@ namespace UserRegistration.Tests
             Assert.AreEqual(result, "User added successfully.");
         }
         [TestMethod]
-        public void CheckIfEmailIsinCorrectFormat() //Testar om email inte är i rätt format
+        public void shouldreturnerror_IfEmail_DoesNotEndWithCorrect_Format() //Testar om email inte är i rätt format
         {
             //Arrange
             var testDummy = new UserRegistrationService();
-            string username = "abcdefghij";
+            string username = "abcdehen8";
             string password = "password12!";
-            string email = "test@hotmail.com";
+            string email = "emmafilip17@hotmail.com";
 
             //Act
             string result = testDummy.AddUser(username, password, email);
@@ -111,7 +111,7 @@ namespace UserRegistration.Tests
         {
             // Arrange
             UserRegistrationService registrationService = new UserRegistrationService();
-            string username = "abcdefghijkl"; // Too long
+            string username = "abcdefghi"; // Too long
             string password = "password123!";
             string email = "emmafilip17@gmail.com";
 
