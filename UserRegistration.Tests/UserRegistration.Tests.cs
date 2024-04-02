@@ -127,7 +127,6 @@ namespace UserRegistration.Tests
         {
             // Arrange
             UserRegistrationService registrationService = new UserRegistrationService();
-            //string Username = "abc$123"; // non-alphanumeric characters
             string nonAlphanumericString = "abc$123";
             string password = "password123!";
             string email = "emmafilip17@gmail.com";
