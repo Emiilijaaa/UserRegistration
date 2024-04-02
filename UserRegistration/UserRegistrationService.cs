@@ -18,6 +18,11 @@ public class UserRegistrationService
             Console.WriteLine("Username must be between 5 and 20 characters long.");
             return "Username must be between 5 and 20 characters long.";
         }
+        if(Users.Contains(username))
+        {
+            Console.WriteLine("Expected user registration to fail due to invalid characters in username.");
+            return "Expected user registration to fail due to invalid characters in username.";
+        }
 
         if (Users.Contains(username))
         {
@@ -60,6 +65,10 @@ public class UserRegistrationService
             }
         }
         return false;
+    }
+    public bool IsAlphanumeric(string str)
+    {
+        return str.All(char.IsLetterOrDigit);
     }
 
     public bool CheckEmail(string email)

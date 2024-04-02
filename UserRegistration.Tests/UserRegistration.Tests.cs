@@ -121,6 +121,36 @@ namespace UserRegistration.Tests
             // Assert
             Assert.AreEqual(result, "User added successfully.");
         }
+        [TestMethod]
+        public void AddUser_InvalidNonAlphanumericCharacters_ReturnFalse() // Testar att den inte inehåller icke-alphanumeriska tecken
+        
+        {
+            // Arrange
+            UserRegistrationService registrationService = new UserRegistrationService();
+            //string Username = "abc$123"; // non-alphanumeric characters
+            string nonAlphanumericString = "abc$123";
+            string password = "password123!";
+
+            string email = "emmafilip17@gmail.com";
+
+            // Act
+            bool result = registrationService.IsAlphanumeric(nonAlphanumericString);
+            // Assert
+            Assert.IsFalse(result, "Expected user registration to fail due to invalid characters in username.");
+        }
+        //[TestMethod]
+        //public void IsAlphanumeric_InvalidNonAlphanumericString_ReturnsFalse() // Testar att den inte imehåller icke-alphanumeriska tecken
+        //{
+        //    // Arrange
+        //    UserRegistrationService registrationService = new UserRegistrationService();
+        //    string nonAlphanumericString = "abc$123";
+
+        //    // Act
+        //    bool result = registrationService.IsAlphanumeric(nonAlphanumericString);
+
+        //    // Assert
+        //    Assert.IsFalse(result, "Expected user registration to fail due to invalid characters in username.");
+        //}
     }
 }
 
