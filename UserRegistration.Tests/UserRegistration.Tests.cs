@@ -36,7 +36,7 @@ namespace UserRegistration.Tests
         }
 
         [TestMethod]
-        public void Password_ValidPasswordWithSpecialCharacter()  // Testar om password innehåller specialtecken, true
+        public void Password_ValidPasswordWithSpecialCharacter()  // Testar om password innehåller specialtecken
         {
             // Arrange
             var registrationService = new UserRegistrationService();
@@ -50,7 +50,7 @@ namespace UserRegistration.Tests
             Assert.AreEqual(result, "User added successfully.");
         }
         [TestMethod]
-        public void Password_ValidPasswordWithoutSpecialCharacter()  // Testar om password innehåller specialtecken, false
+        public void Password_ValidPasswordWithoutSpecialCharacter()  // Testar om password saknar specialtecken
         {
             // Arrange
             var registrationService = new UserRegistrationService();
@@ -65,7 +65,7 @@ namespace UserRegistration.Tests
         }
 
         [TestMethod]
-        public void Password_TooShort() // Testar om password är rätt längd i detta fall för kort
+        public void Password_TooShort() // Testar om password är för kort
         {
             // Arrange
             var registrationService = new UserRegistrationService();
@@ -79,7 +79,7 @@ namespace UserRegistration.Tests
             Assert.AreEqual(result, "Password lenght must be over 8 characters and must include special sign");
         }
         [TestMethod]
-        public void CheckIfEmailIsCorrectFormat() //Testar om email är i rätt format @gmail.com true
+        public void CheckIfEmailIsCorrectFormat() //Testar om email är i rätt format @gmail.com
         {
             //Arrange
             var testDummy = new UserRegistrationService();
@@ -93,7 +93,7 @@ namespace UserRegistration.Tests
             Assert.AreEqual(result, "User added successfully.");
         }
         [TestMethod]
-        public void CheckIfEmailIsinCorrectFormat() //Testar om email är i rätt format, false
+        public void CheckIfEmailIsinCorrectFormat() //Testar om email inte är i rätt format
         {
             //Arrange
             var testDummy = new UserRegistrationService();
@@ -107,7 +107,7 @@ namespace UserRegistration.Tests
             Assert.AreEqual(result, "Email must include @gmail.com");
         }
         [TestMethod]
-        public void AddUser() //Testar att lägga till en user
+        public void AddUser() //Testar att lägga till en användare (user)
         {
             // Arrange
             UserRegistrationService registrationService = new UserRegistrationService();
@@ -122,7 +122,7 @@ namespace UserRegistration.Tests
             Assert.AreEqual(result, "User added successfully.");
         }
         [TestMethod]
-        public void AddUser_InvalidNonAlphanumericCharacters_ReturnFalse() // Testar att den inte inehåller icke-alphanumeriska tecken
+        public void AddUser_InvalidNonAlphanumericCharacters_ReturnFalse() // Testar att användarnamet inte inehåller icke-alphanumeriska tecken
         
         {
             // Arrange
@@ -130,7 +130,6 @@ namespace UserRegistration.Tests
             //string Username = "abc$123"; // non-alphanumeric characters
             string nonAlphanumericString = "abc$123";
             string password = "password123!";
-
             string email = "emmafilip17@gmail.com";
 
             // Act
